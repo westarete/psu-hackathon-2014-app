@@ -24,6 +24,12 @@ helpers do
       "tshirt"
     end
   end
+
+  # Given a forecast, return the URL of the attire image to display.
+  def attire_image_url(forecast)
+    "https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/#{attire(forecast)}.png"
+  end
+
 end
 
 get '/' do
