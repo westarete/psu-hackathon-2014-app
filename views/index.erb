@@ -25,8 +25,25 @@
     </form>
 
     <% if @location %>
-      <p>You are at <%= @location.address %> (<%= @location.latitude %>, <%= @location.longitude %>)</p>
-      <p>It is <%= @forecast.currently.summary %> and <%= @forecast.currently.temperature %> degrees.</p>
+      <p>
+        You are at <%= @location.address %> 
+        (<%= @location.latitude %>, <%= @location.longitude %>).
+      </p>
+      <p>
+        When you bike in, 
+        it will be <%= @forecast_start.currently.summary %> 
+        and <%= @forecast_start.currently.temperature %> degrees.
+      </p>
+      <p>
+        At lunch time, 
+        it will be <%= @forecast_lunch.currently.summary %> 
+        and <%= @forecast_lunch.currently.temperature %> degrees.
+      </p>
+      <p>
+        When you bike home, 
+        it will be <%= @forecast_end.currently.summary %> 
+        and <%= @forecast_end.currently.temperature %> degrees.
+      </p>
     <% else %>
       <p>I could not find your location<p>
     <% end %>    
