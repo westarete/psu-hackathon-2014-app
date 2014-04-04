@@ -26,6 +26,7 @@
 
     <% if @location %>
       <p>You are at <%= @location.address %> (<%= @location.latitude %>, <%= @location.longitude %>)</p>
+      <p>It is <%= @forecast.currently.summary %> and <%= @forecast.currently.temperature %> degrees.</p>
     <% else %>
       <p>I could not find your location<p>
     <% end %>    
