@@ -14,7 +14,9 @@ ForecastIO.api_key = ENV['FORECAST_API_KEY'] or raise "Set the FORECAST_API_KEY 
 helpers do
   # Given a forecast, return a string to represent the type of attire that should be worn.
   def attire(forecast)
-    if forecast.currently.temperature < 40
+    if forecast.currently.icon == 'clear-day'
+      "sunglasses"
+    elsif forecast.currently.temperature < 40
       "hat"
     elsif forecast.currently.precipProbability >= 0.5
       "raincoat"
