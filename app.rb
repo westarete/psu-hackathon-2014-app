@@ -9,7 +9,7 @@ require 'forecast_io'
 MultiJson.use(:json_pure)
 
 # Set our API key for talking to forecast.io
-ForecastIO.api_key = ENV['FORECAST_API_KEY'] or raise "Set the FORECAST_API_KEY environment variable"
+ForecastIO.api_key = 'dc9060a06370dd03b46af35827653a8c'
 
 helpers do
 
