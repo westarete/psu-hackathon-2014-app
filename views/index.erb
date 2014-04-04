@@ -1,65 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bicycle Attire</title>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bicycle Attire</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container">
     <h1>You're leaving for work in one hour...</h1>
 
-    <form action="/" method="GET">
-      <label>Location</label>
-      <input name="location" type="text" value="<%= params[:location] %>">
-      <input type="submit" value="Submit">
-    </form>
+    <p>
+      ...and you're not sure what to wear on your bike commute. Enter your location
+      below and we'll help you get dressed.
+    </p>
 
-    <% if @location %>
-      <p>
-        You are at <%= @location.address %> 
-        (<%= @location.latitude %>, <%= @location.longitude %>).
-      </p>
-      <p>
-        When you bike in, 
-        it will be <%= @forecast_start.summary %>
-        and <%= @forecast_start.temperature %> degrees.
-        Wear a <%= attire(@forecast_start) %>.
-        <img src="https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/<%= attire(@forecast_start) %>.png"
-             width="20px">
-      </p>
-      <p>
-        At lunch time, 
-        it will be <%= @forecast_lunch.summary %>
-        and <%= @forecast_lunch.temperature %> degrees.
-        Wear a <%= attire(@forecast_lunch) %>.
-        <img src="https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/<%= attire(@forecast_lunch) %>.png"
-             width="20px">
-      </p>
-      <p>
-        When you bike home, 
-        it will be <%= @forecast_end.summary %>
-        and <%= @forecast_end.temperature %> degrees.
-        Wear a <%= attire(@forecast_end) %>.
-        <img src="https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/<%= attire(@forecast_end) %>.png"
-             width="20px">
-      </p>
-    <% else %>
-      <p>I could not find your location<p>
-    <% end %>    
+    <div class="row">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  </body>
+      <div class="col-md-6 col-md-offset-2" style="text-align: center">
+        <form class="form-inline" role="form" action="/" method="GET">
+          <input style="margin-bottom: 20px" class="form-control" name="location" type="text" size="50" placeholder="Enter your location" value="<%= @location.address %>">
+          <button style="margin-bottom: 20px" type="submit" class="btn btn-primary">Tell me what to wear</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <% if @location %>
+
+    <div class="row">
+      <div class="col-md-3 well" style="text-align: center">
+        <h2>Heading In</h2>
+        <%= erb :forecast, :locals => { :forecast => @forecast_start } %>
+      </div>
+      <div class="col-md-3 col-md-offset-1 well" style="text-align: center">
+        <h2>Lunch Time</h2>
+        <%= erb :forecast, :locals => { :forecast => @forecast_lunch } %>
+      </div>
+      <div class="col-md-3 col-md-offset-1 well" style="text-align: center">
+        <h2>Heading Home</h2>
+        <%= erb :forecast, :locals => { :forecast => @forecast_end } %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <hr>
+
+  <footer style="text-align: right">
+    <p>&copy; 2014 <a href="http://westarete.com">West Arete</a></p>
+  </footer>
+</div>
+<!-- /container -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
 </html>
