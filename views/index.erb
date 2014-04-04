@@ -31,24 +31,24 @@
       </p>
       <p>
         When you bike in, 
-        it will be <%= @forecast_start.currently.summary %> 
-        and <%= @forecast_start.currently.temperature %> degrees.
+        it will be <%= @forecast_start.summary %>
+        and <%= @forecast_start.temperature %> degrees.
         Wear a <%= attire(@forecast_start) %>.
         <img src="https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/<%= attire(@forecast_start) %>.png"
              width="20px">
       </p>
       <p>
         At lunch time, 
-        it will be <%= @forecast_lunch.currently.summary %> 
-        and <%= @forecast_lunch.currently.temperature %> degrees.
+        it will be <%= @forecast_lunch.summary %>
+        and <%= @forecast_lunch.temperature %> degrees.
         Wear a <%= attire(@forecast_lunch) %>.
         <img src="https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/<%= attire(@forecast_lunch) %>.png"
              width="20px">
       </p>
       <p>
         When you bike home, 
-        it will be <%= @forecast_end.currently.summary %> 
-        and <%= @forecast_end.currently.temperature %> degrees.
+        it will be <%= @forecast_end.summary %>
+        and <%= @forecast_end.temperature %> degrees.
         Wear a <%= attire(@forecast_end) %>.
         <img src="https://raw.githubusercontent.com/westarete/psu-hackathon-2014-app/master/public/images/<%= attire(@forecast_end) %>.png"
              width="20px">

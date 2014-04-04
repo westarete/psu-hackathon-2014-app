@@ -14,11 +14,11 @@ ForecastIO.api_key = ENV['FORECAST_API_KEY'] or raise "Set the FORECAST_API_KEY 
 helpers do
   # Given a forecast, return a string to represent the type of attire that should be worn.
   def attire(forecast)
-    if forecast.currently.icon == 'clear-day'
+    if forecast.icon == 'clear-day'
       "sunglasses"
-    elsif forecast.currently.temperature < 40
+    elsif forecast.temperature < 40
       "hat"
-    elsif forecast.currently.precipProbability >= 0.5
+    elsif forecast.precipProbability >= 0.5
       "raincoat"
     else
       "tshirt"
@@ -36,9 +36,9 @@ get '/' do
   end_time = Time.now.to_i + 10*60*60
 
   # Get the forecasts.
-  @forecast_start = ForecastIO.forecast(@location.latitude, @location.longitude, :time => start_time)
-  @forecast_lunch = ForecastIO.forecast(@location.latitude, @location.longitude, :time => lunch_time)
-  @forecast_end   = ForecastIO.forecast(@location.latitude, @location.longitude, :time => end_time)
+  @forecast_start = ForecastIO.forecast(@location.latitude, @location.longitude, :time => start_time).currently
+  @forecast_lunch = ForecastIO.forecast(@location.latitude, @location.longitude, :time => lunch_time).currently
+  @forecast_end   = ForecastIO.forecast(@location.latitude, @location.longitude, :time => end_time).currently
 
   # Render the view.
   erb :index
