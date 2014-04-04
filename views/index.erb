@@ -43,18 +43,34 @@
   <% if @location %>
 
     <div class="row">
+
       <div class="col-md-3 well" style="text-align: center">
         <h2>Heading In</h2>
-        <%= erb :forecast, :locals => { :forecast => @forecast_start } %>
+        <img src="<%= attire_image_url(@forecast_start) %>" width="140px">
+        <br>
+        <%= @forecast_start.summary %>
+        <br>
+        <%= @forecast_start.temperature.round %>&deg;
       </div>
+
       <div class="col-md-3 col-md-offset-1 well" style="text-align: center">
         <h2>Lunch Time</h2>
-        <%= erb :forecast, :locals => { :forecast => @forecast_lunch } %>
+        <img src="<%= attire_image_url(@forecast_lunch) %>" width="140px">
+        <br>
+        <%= @forecast_lunch.summary %>
+        <br>
+        <%= @forecast_lunch.temperature.round %>&deg;
       </div>
+
       <div class="col-md-3 col-md-offset-1 well" style="text-align: center">
         <h2>Heading Home</h2>
-        <%= erb :forecast, :locals => { :forecast => @forecast_end } %>
+        <img src="<%= attire_image_url(@forecast_end) %>" width="140px">
+        <br>
+        <%= @forecast_end.summary %>
+        <br>
+        <%= @forecast_end.temperature.round %>&deg;
       </div>
+
     </div>
 
   <% end %>
